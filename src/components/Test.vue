@@ -2,6 +2,7 @@
   <div>
     <h1>Usando computed properties</h1>
     <p>{{fullName}}</p>
+    <p class="mensaje">{{msg}}</p>
   </div>
 </template>
 
@@ -47,9 +48,20 @@ export default {
     fullName() {
       return this.user.firstName + " " + this.user.lastName;
     }
+  },
+  props: {
+    msg: {
+      type: String,
+      default: "No hay mensaje"
+    }
   }
 };
 </script>
 
 <style>
+.mensaje {
+  background: #f00;
+  color: #fff;
+  padding: 1rem;
+}
 </style>

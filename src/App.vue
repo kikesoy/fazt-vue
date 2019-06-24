@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Hola mundo</h1>
-    <Test/>
+    <Test msg="Este mensaje viene desde el componente App"/>
   </div>
 </template>
 
