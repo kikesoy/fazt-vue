@@ -1,13 +1,7 @@
 <template>
   <div>
-    <h1>Uso de métodos</h1>
-    <button type="button" v-on:click="saludar(user.firstName)">Click Me</button>
-    <hr>
-    <input type="text" v-model="user.firstName">
-    <hr>
-    <input type="text" v-on:keyup="typing">
-    <hr>
-    <input type="text" v-on:keyup.enter="typingEnter">
+    <h1>Usando computed properties</h1>
+    <p>{{fullName}}</p>
   </div>
 </template>
 
@@ -47,6 +41,11 @@ export default {
     },
     typingEnter(e) {
       alert("Presionó la tecla Enter");
+    }
+  },
+  computed: {
+    fullName() {
+      return this.user.firstName + " " + this.user.lastName;
     }
   }
 };
