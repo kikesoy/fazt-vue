@@ -1,16 +1,7 @@
 <template>
   <div>
-    <h2>Componente test {{title}}</h2>
-    <p>{{ user.birthDay.bDay }}</p>
-    <hr>
-    <div v-if="showName">{{user.firstName}}</div>
-    <div v-else>El usuario no tiene nombre</div>
-    <hr>
-    <div>Tarea del momento: {{tasks[0].title}}</div>
-    <hr>
-    <ul>
-      <li v-for="task in tasks">{{task.title}}</li>
-    </ul>
+    <h1>Uso de métodos</h1>
+    <button type="button" v-on:click="saludar(user.firstName)">Click Me</button>
   </div>
 </template>
 
@@ -40,6 +31,11 @@ export default {
         { title: "Ejercitar" }
       ]
     };
+  },
+  methods: {
+    saludar(name) {
+      alert("Hola " + name);
+    }
   }
 };
 </script>
