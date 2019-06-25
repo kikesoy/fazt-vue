@@ -1,11 +1,8 @@
 <<template>
   <div class="users">
+    
     <h1>User component</h1>
-    <ul>
-      <li v-for="user in users">
-        {{user.name}} <a href="mailto:#">{{user.email}}</a>
-      </li>
-    </ul>
+    <hr>
     <form v-on:submit.prevent="addUser">
       <label>
         Nombre:
@@ -19,6 +16,12 @@
               Add User
       </button>
     </form>
+    <hr>
+    <ul>
+      <li v-for="user in users">
+        {{user.name}} <a href="mailto:#">{{user.email}}</a> <button v-on:click="deleteUser(user)">X</button>
+      </li>
+    </ul>
   </div>
 </template>
 <script>
@@ -47,7 +50,11 @@ export default {
   },
   methods: {
     addUser() {
-      console.log("agregando usuario");
+      this.users.push(this.newUser);
+      this.newUser = {};
+    },
+    deleteUser(user) {
+      this.users.splice(this.users.indexOf(user), 1);
     }
   }
 };
@@ -72,5 +79,8 @@ a {
 a:hover {
   color: #ccc;
   background: transparent;
+}
+form {
+  padding: 1rem;
 }
 </style>
