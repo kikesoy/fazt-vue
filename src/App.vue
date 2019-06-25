@@ -2,16 +2,19 @@
   <div id="app">
     <h1>Hola mundo</h1>
     <Test msg="Este mensaje viene desde el componente App"/>
+    <Users/>
   </div>
 </template>
 
 <script>
 import Test from "./components/Test";
+import Users from "./components/Users";
 
 export default {
   name: "App",
   components: {
-    Test
+    Test,
+    Users
   }
 };
 </script>
