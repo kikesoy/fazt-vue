@@ -17,10 +17,13 @@
       </button>
     </form>
     <hr>
-    <ul>
+    <div v-if="!users.length">
+      <h3>No hay usuarios registrados</h3>
+    </div>
+    <ul v-else>
       <li v-for="user in users">
-        {{user.name}} <a href="mailto:#">{{user.email}}</a> <button v-on:click="deleteUser(user)">X</button>
-      </li>
+      {{user.name}} <a href="mailto:#">{{user.email}}</a> <button v-on:click="deleteUser(user)">X</button>
+      </li>     
     </ul>
   </div>
 </template>
@@ -28,23 +31,7 @@
 export default {
   data() {
     return {
-      users: [
-        {
-          name: "Enrique",
-          email: "enrique@correo.com",
-          contacted: false
-        },
-        {
-          name: "Ixsha",
-          email: "ixsha@correo.com",
-          contacted: false
-        },
-        {
-          name: "Bianca",
-          email: "bianca@correo.com",
-          contacted: true
-        }
-      ],
+      users: [],
       newUser: {}
     };
   },
@@ -56,6 +43,11 @@ export default {
     deleteUser(user) {
       this.users.splice(this.users.indexOf(user), 1);
     }
+  },
+  created() {
+    this.$http
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then(res => (this.users = res.body));
   }
 };
 </script>
