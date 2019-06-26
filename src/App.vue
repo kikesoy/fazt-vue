@@ -1,8 +1,17 @@
 <template>
   <div id="app">
+    <nav>
+      <ul>
+        <li>
+          <router-link to="/test">Test</router-link>
+        </li>
+        <li>
+          <router-link to="/">User</router-link>
+        </li>
+      </ul>
+    </nav>
     <h1>Hola mundo</h1>
-    <Test msg="Este mensaje viene desde el componente App"/>
-    <Users/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -27,5 +36,18 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+nav {
+  background: #000;
+  padding: 1rem;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+nav ul li {
+  padding: 1rem;
 }
 </style>
